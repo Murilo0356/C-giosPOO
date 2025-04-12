@@ -1,0 +1,57 @@
+package JogosPOO;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class MetodosDescoberta {
+    Random random = new Random();
+    Scanner scanner = new Scanner(System.in);
+
+    String embaralhar(String palavra) {
+        char[] palavraArray = palavra.toCharArray();
+        for (int x = 0; x < palavraArray.length; x++) {
+            int indiceAleatorio = random.nextInt(palavraArray.length);
+            char temp = palavraArray[x];
+            palavraArray[x] = palavraArray[indiceAleatorio];
+            palavraArray[indiceAleatorio] = temp;
+        }
+        return new String(palavraArray);
+    }
+
+    void jogar(String palavraSelecionada) {
+        int tentativas = 1;
+        boolean acertou = false;
+
+        while (!acertou) {
+            System.out.println("Informe a palavra, 'dica' para receber uma dica ou '0' para desistir:");
+            String entrada = scanner.nextLine();
+
+            if (entrada.equals("0")) {
+                desistir(tentativas);
+                break;
+            }
+
+            if (entrada.equalsIgnoreCase("dica")) {
+                exibirDica(palavraSelecionada);
+                continue;
+            }
+
+            if (entrada.equalsIgnoreCase(palavraSelecionada)) {
+                System.err.println("Você acertou com " + tentativas + " tentativas!");
+                acertou = true;
+            } else {
+                tentativas++;
+            }
+        }
+    }
+
+    void exibirDica(String palavra) {
+        char primeiraLetra = palavra.charAt(0);
+        char ultimaLetra = palavra.charAt(palavra.length() - 1);
+        System.out.println("DICA: A primeira letra é '" + primeiraLetra + "', a última é '" + ultimaLetra + "'");
+    }
+
+    void desistir(int tentativas) {
+        System.out.println("Frangote desistiu com " + tentativas + " tentativas");
+    }
+}
