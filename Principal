@@ -1,0 +1,12 @@
+package JogosPOO;
+
+public class Principal {
+
+	public static void main(String[] args) {
+
+        JogoDaDescoberta jogoDescoberta = new JogoDaDescoberta();
+        
+        jogoDescoberta.iniciar();
+	}
+
+}
