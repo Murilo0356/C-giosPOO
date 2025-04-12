@@ -1,0 +1,20 @@
+package JogosPOO;
+
+public class JogoDaDescoberta {
+
+	    void iniciar() {
+	        System.err.println("Bem-vindo ao Jogo da Descoberta");
+
+	        EscolherPalavra escolha = new EscolherPalavra();
+	        MetodosDescoberta descoberta = new MetodosDescoberta();
+
+	        String palavra = escolha.sorteio();
+	        String palavraEmbaralhada = descoberta.embaralhar(palavra);
+
+	        System.out.println("Qual é a palavra " + palavraEmbaralhada + "?");
+
+	        descoberta.jogar(palavra);
+	    
+	}
+
+}
