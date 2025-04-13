@@ -1,0 +1,8 @@
+package JogosPOO;
+
+public class CacaPalavra {
+    void executar() {
+        MetodosCacaPalavra jogo = new MetodosCacaPalavra();
+        jogo.iniciarJogo();
+    }
+}
