@@ -1,0 +1,70 @@
+package JogosPOO;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class MetodosCacaPalavra {
+    int tamanho = 10;
+    char[][] tabuleiro = new char[tamanho][tamanho];
+    Random random = new Random();
+    EscolherPalavra escolher = new EscolherPalavra();
+    Dica dica = new Dica();
+    Scanner scanner = new Scanner(System.in);
+
+    void iniciarJogo() {
+        String palavra = escolher.sorteio();
+
+        preencherTabuleiro();
+        inserirPalavra(palavra);
+
+        System.out.println("\nTabuleiro com palavra escondida:");
+        imprimirTabuleiro();
+
+        int tentativas = 1;
+
+        while (true) {
+            System.out.println("\nDigite a palavra escondida no tabuleiro:");
+            System.out.println("(Ou digite 'dica' para receber uma dica, ou '0' para desistir)");
+            String tentativa = scanner.nextLine();
+
+            if (tentativa.equalsIgnoreCase("0")) {
+                System.out.println("Você desistiu! A palavra era: " + palavra);
+                break;
+            } else if (tentativa.equalsIgnoreCase("dica")) {
+                dica.exibir(palavra);
+            } else if (tentativa.equalsIgnoreCase(palavra)) {
+                System.out.println("Parabéns! Você acertou a palavra com " + tentativas + " tentativa(s).");
+                break;
+            } else {
+                System.out.println("Palavra incorreta. Tente novamente.");
+                tentativas++;
+            }
+        }
+    }
+
+    void preencherTabuleiro() {
+        for (int i = 0; i < tamanho; i++) {
+            for (int j = 0; j < tamanho; j++) {
+                tabuleiro[i][j] = (char) ('a' + random.nextInt(26));
+            }
+        }
+    }
+
+    void imprimirTabuleiro() {
+        for (int i = 0; i < tamanho; i++) {
+            for (int j = 0; j < tamanho; j++) {
+                System.out.print(tabuleiro[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    void inserirPalavra(String palavra) {
+        int linha = random.nextInt(tamanho);
+        int coluna = random.nextInt(tamanho - palavra.length());
+
+        for (int i = 0; i < palavra.length(); i++) {
+            tabuleiro[linha][coluna + i] = palavra.charAt(i);
+        }
+    }
+}
