@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class MetodosDescoberta {
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
-
+    Dica dica = new Dica();
     String embaralhar(String palavra) {
         char[] palavraArray = palavra.toCharArray();
         for (int x = 0; x < palavraArray.length; x++) {
@@ -32,7 +32,7 @@ public class MetodosDescoberta {
             }
 
             if (entrada.equalsIgnoreCase("dica")) {
-                exibirDica(palavraSelecionada);
+                dica.exibir(palavraSelecionada);  
                 continue;
             }
 
