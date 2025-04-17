@@ -3,21 +3,31 @@ package JogosPOO;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MetodosCacaPalavra {
-    int tamanho = 10;
-    char[][] tabuleiro = new char[tamanho][tamanho];
-    Random random = new Random();
-    EscolherPalavra escolher = new EscolherPalavra();
-    Dica dica = new Dica();
-    Scanner scanner = new Scanner(System.in);
 
+public class MetodosCacaPalavra {
+    
+   Scanner scanner = new Scanner(System.in);
+   EscolherPalavra escolher = new EscolherPalavra();
+
+	int tamanho = 12;
+    
+    char[][] tabuleiro = new char[tamanho][tamanho];
+    
+    Random random = new Random();
+    
+ 
+    Dica dica = new Dica();
+    
+    
     void iniciarJogo() {
         String palavra = escolher.sorteio();
 
         preencherTabuleiro();
+        
         inserirPalavra(palavra);
-
+        
         System.out.println("\nTabuleiro com palavra escondida:");
+        
         imprimirTabuleiro();
 
         int tentativas = 1;
@@ -27,21 +37,26 @@ public class MetodosCacaPalavra {
             System.out.println("(Ou digite 'dica' para receber uma dica, ou '0' para desistir)");
             String tentativa = scanner.nextLine();
 
-            if (tentativa.equalsIgnoreCase("0")) {
+          if (tentativa.equalsIgnoreCase("0")) {
                 System.out.println("Você desistiu! A palavra era: " + palavra);
                 break;
-            } else if (tentativa.equalsIgnoreCase("dica")) {
+            } 
+         else if (tentativa.equalsIgnoreCase("dica")) {
                 dica.exibir(palavra);
-            } else if (tentativa.equalsIgnoreCase(palavra)) {
+
+            } 
+         else if (tentativa.equalsIgnoreCase(palavra)) {
                 System.out.println("Parabéns! Você acertou a palavra com " + tentativas + " tentativa(s).");
                 break;
-            } else {
+            } 
+         else {
                 System.out.println("Palavra incorreta. Tente novamente.");
                 tentativas++;
             }
         }
     }
 
+    
     void preencherTabuleiro() {
         for (int i = 0; i < tamanho; i++) {
             for (int j = 0; j < tamanho; j++) {
@@ -50,6 +65,7 @@ public class MetodosCacaPalavra {
         }
     }
 
+    
     void imprimirTabuleiro() {
         for (int i = 0; i < tamanho; i++) {
             for (int j = 0; j < tamanho; j++) {
@@ -63,7 +79,7 @@ public class MetodosCacaPalavra {
         int linha = random.nextInt(tamanho);
         int coluna = random.nextInt(tamanho - palavra.length());
 
-        for (int i = 0; i < palavra.length(); i++) {
+    for (int i = 0; i < palavra.length(); i++) {
             tabuleiro[linha][coluna + i] = palavra.charAt(i);
         }
     }
