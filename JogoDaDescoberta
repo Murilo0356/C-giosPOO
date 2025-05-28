@@ -1,8 +1,8 @@
 package JogosPOO;
 
 public class JogoDaDescoberta {
-
-	    void iniciar() {
+	public JogoDaDescoberta() {}
+	void iniciar() {
 	        System.err.println("Bem-vindo ao Jogo da Descoberta");
 
 	        EscolherPalavra escolha = new EscolherPalavra();
