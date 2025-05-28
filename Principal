@@ -1,23 +1,26 @@
 package JogosPOO;
+
 import java.util.Scanner;
+
 public class Principal {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-        JogoDaDescoberta jogoDescoberta = new JogoDaDescoberta();
-        CacaPalavra jogoCacaPlavra = new CacaPalavra();
-        int escolha;
-        
-        System.out.println("Ola!!!, por favor selecione 1 para jogar o jogo da descoberta ou 2 para caça palavras: ");
-        escolha = scanner.nextInt();
-      
-        
-   if(escolha == 1) {        
-        jogoDescoberta.iniciar();
+		JogoDaDescoberta jogoDescoberta = new JogoDaDescoberta();
+		CacaPalavra jogoCacaPlavra = new CacaPalavra();
+		int escolha;
 
-   }
-   else if(escolha == 2){}
-	jogoCacaPlavra.executar();
-}
+		System.out.println("Ola!!!, por favor selecione 1 para jogar o jogo da descoberta ou 2 para caça palavras: ");
+		escolha = scanner.nextInt();
+
+		if (escolha == 1) {
+			jogoDescoberta.iniciar();
+
+		} else if (escolha == 2) {
+			jogoCacaPlavra.executar();
+
+		}
+
+	}
 
 }
