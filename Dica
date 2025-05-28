@@ -1,12 +1,12 @@
 package JogosPOO;
 
 public class Dica {
-	
+    public Dica() {
+    }
 
-	    void exibir(String palavra) {
-	        char primeiraLetra = palavra.charAt(0);
-	        char ultimaLetra = palavra.charAt(palavra.length() - 1);
-	        System.out.println("DICA: A primeira letra é '" + primeiraLetra + "', a última é '" + ultimaLetra + "'");
-	    
-	}
+    public void exibir(String palavra) {
+        char primeiraLetra = palavra.charAt(0);
+        char ultimaLetra = palavra.charAt(palavra.length() - 1);
+        System.out.println("DICA: A primeira letra é '" + primeiraLetra + "', a última é '" + ultimaLetra + "'");
+    }
 }
